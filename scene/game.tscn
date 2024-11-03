@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjrtqvu20d8ga"]
+
+[ext_resource type="PackedScene" uid="uid://pdlfbwuw2m28" path="res://scene/background.tscn" id="1_eee4s"]
+[ext_resource type="Script" path="res://scene/game.gd" id="1_ehmnn"]
+[ext_resource type="PackedScene" uid="uid://b4ka0uk4sp668" path="res://scene/plane.tscn" id="1_ng1i0"]
+[ext_resource type="Texture2D" uid="uid://bebxru7s5oolm" path="res://assets/PNG/starGold.png" id="4_1mh02"]
+[ext_resource type="FontFile" uid="uid://bsgmlxubhcu46" path="res://assets/Font/kenvector_future.ttf" id="5_0dknm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5r7o"]
+
+[sub_resource type="Theme" id="Theme_gtc5n"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("5_0dknm")
+Label/styles/normal = SubResource("StyleBoxEmpty_n5r7o")
+
+[node name="Game" type="Node2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_ehmnn")
+layout = ["res://scene/spikes1.tscn", "res://scene/spikes2.tscn"]
+distance = 1920
+
+[node name="Plane" parent="." instance=ExtResource("1_ng1i0")]
+unique_name_in_owner = true
+position = Vector2(230, 333)
+
+[node name="Camera2D" type="Camera2D" parent="Plane"]
+position = Vector2(358, -2)
+ignore_rotation = false
+limit_top = 0
+limit_bottom = 650
+position_smoothing_enabled = true
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+offset_left = 39.0
+offset_top = 233.0
+offset_right = 461.0
+offset_bottom = 268.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "PRESS SPACE TO PLAY"
+
+[node name="Background" parent="." instance=ExtResource("1_eee4s")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_right = -26.0
+offset_bottom = 96.0
+grow_horizontal = 0
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_1mh02")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.0911214, 0.0911215, 0.0911214, 1)
+layout_mode = 2
+theme = SubResource("Theme_gtc5n")
+text = "3"

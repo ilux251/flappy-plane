@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bormdl4pbw6n5"]
+
+[ext_resource type="Script" path="res://scene/coin.gd" id="1_5q07h"]
+[ext_resource type="Texture2D" uid="uid://b8lwyjccscj7y" path="res://assets/Spritesheet/sheet.png" id="1_x7m5u"]
+
+[sub_resource type="Animation" id="Animation_35lu7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3dxjk"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 0), Vector2(5, 0), Vector2(-5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.218166, 0.218166, -0.218166]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2m5j"]
+_data = {
+"RESET": SubResource("Animation_35lu7"),
+"rotate": SubResource("Animation_3dxjk")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xpme"]
+radius = 18.0278
+
+[node name="Coin" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_5q07h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x7m5u")
+region_enabled = true
+region_rect = Rect2(369, 1444, 39, 37)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f2m5j")
+}
+autoplay = "rotate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_5xpme")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

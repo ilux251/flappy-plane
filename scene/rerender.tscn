@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bahhiq8lnfm86"]
+
+[ext_resource type="Script" path="res://scene/rerender.gd" id="1_k3x63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7kqn"]
+size = Vector2(180, 646.5)
+
+[node name="Rerender" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_k3x63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(90, 323.75)
+shape = SubResource("RectangleShape2D_s7kqn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

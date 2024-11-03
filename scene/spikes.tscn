@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://8bb7w8v3ra2u"]
+
+[ext_resource type="Texture2D" uid="uid://b8lwyjccscj7y" path="res://assets/Spritesheet/sheet.png" id="1_jw3kp"]
+
+[node name="spike" type="StaticBody2D"]
+position = Vector2(0, -1)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(54, 119)
+texture = ExtResource("1_jw3kp")
+region_enabled = true
+region_rect = Rect2(265, 987, 107, 238)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, 2, 29, 109, 36, 116, 60, 239, 70, 239, 82, 136, 86, 135, 94, 63, 101, 61, 107, 1)

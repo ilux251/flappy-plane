@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckj6dt6jnpwfi"]
+
+[ext_resource type="Texture2D" uid="uid://b8lwyjccscj7y" path="res://assets/Spritesheet/sheet.png" id="1_c53ks"]
+
+[node name="ground" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(405, -35)
+texture = ExtResource("1_c53ks")
+region_enabled = true
+region_rect = Rect2(0, 2, 810, 69)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -34, 34, -36, 40, -30, 89, -25, 133, -37, 157, -64, 250, -67, 307, -44, 348, -44, 373, -59, 438, -58, 468, -27, 509, -27, 533, -16, 571, -15, 598, -44, 635, -47, 658, -68, 746, -70, 764, -46, 808, -36, 808, -1, 0, 0)

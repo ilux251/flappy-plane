@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwh3vo3iebjnj"]
+
+[ext_resource type="PackedScene" uid="uid://ckj6dt6jnpwfi" path="res://scene/ground.tscn" id="1_y1htv"]
+[ext_resource type="PackedScene" uid="uid://8bb7w8v3ra2u" path="res://scene/spikes.tscn" id="2_e8q2k"]
+[ext_resource type="PackedScene" uid="uid://bormdl4pbw6n5" path="res://scene/coin.tscn" id="3_mpegc"]
+
+[node name="Spikes1" type="Node2D"]
+scale = Vector2(1.66906, 1.66906)
+
+[node name="spike1" parent="." instance=ExtResource("2_e8q2k")]
+position = Vector2(415, 668)
+rotation = -3.12711
+scale = Vector2(1.67703, 1.67703)
+
+[node name="spike2" parent="." instance=ExtResource("2_e8q2k")]
+position = Vector2(1, -18)
+
+[node name="spike3" parent="." instance=ExtResource("2_e8q2k")]
+position = Vector2(1045, 560)
+rotation = -3.14159
+
+[node name="spike4" parent="." instance=ExtResource("2_e8q2k")]
+position = Vector2(1009, 633)
+rotation = 3.14159
+
+[node name="spike5" parent="." instance=ExtResource("2_e8q2k")]
+position = Vector2(1095, 651)
+rotation = -3.14159
+
+[node name="ground" parent="." instance=ExtResource("1_y1htv")]
+position = Vector2(0, 661)
+scale = Vector2(1.425, 1.313)
+
+[node name="ground2" parent="." instance=ExtResource("1_y1htv")]
+position = Vector2(1154, -10)
+rotation = -3.14159
+scale = Vector2(1.43169, 1.52)
+
+[node name="Coin" parent="." instance=ExtResource("3_mpegc")]
+position = Vector2(454.747, 351.695)
+scale = Vector2(1, 1.00349)
